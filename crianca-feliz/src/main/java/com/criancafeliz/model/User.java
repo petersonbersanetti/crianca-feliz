@@ -7,14 +7,18 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
-public class Person {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idPerson;
+    private Long idUser;
     private String name;
     private String cpf;
+    private String email;
+    private String password;
 }
