@@ -1,10 +1,8 @@
-package com.criancafeliz.config;
+        package com.criancafeliz.config;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.boot.autoconfigure.integration.IntegrationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,7 +12,6 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
-import javax.security.sasl.AuthorizeCallback;
 
 import java.util.Collections;
 
@@ -27,7 +24,7 @@ public class AppConfig {
     SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception {
 
         http.sessionManagement(management -> management.sessionCreationPolicy(
-                SessionCreationPolicy.STATELESS))
+                        SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(
                         Authorize -> Authorize.requestMatchers("/api/**").authenticated()
                                 .anyRequest().permitAll())
@@ -54,7 +51,8 @@ public class AppConfig {
         };
     }
 
+    @Bean
     public PasswordEncoder passwordEncoder () {
-     return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder();
     }
 }

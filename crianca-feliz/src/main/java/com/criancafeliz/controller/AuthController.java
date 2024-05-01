@@ -6,14 +6,12 @@ import com.criancafeliz.repository.UserRepository;
 import com.criancafeliz.request.LoginRequest;
 import com.criancafeliz.response.AuthResponse;
 import com.criancafeliz.service.CustomeruserDetailsService;
-import jakarta.security.auth.message.AuthException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,6 +38,7 @@ public class AuthController {
     public AuthResponse createUser(@RequestBody User user) throws Exception{
 
         String email = user.getEmail();
+        String cpf = user.getCpf();
         String password = user.getPassword();
         String name = user.getName();
 
@@ -50,6 +49,7 @@ public class AuthController {
 
         User createdUser = new User();
         createdUser.setEmail(email);
+        createdUser.setCpf(cpf);
         createdUser.setPassword(passwordEncoder.encode(password));
         createdUser.setName(name);
 
@@ -63,12 +63,12 @@ public class AuthController {
         AuthResponse res = new AuthResponse();
 
         res.setJwt(token);
-        res.setMessage("Login realizado com sucesso!");
+        res.setMessage("Cadastro realizado com sucesso!");
 
         return res;
     }
 
-    @PostMapping ("/sigin")
+    @PostMapping ("/signin")
     public AuthResponse signinHandler (@RequestBody LoginRequest loginRequest) {
         String username = loginRequest.getEmail();
         String password = loginRequest.getPassword();

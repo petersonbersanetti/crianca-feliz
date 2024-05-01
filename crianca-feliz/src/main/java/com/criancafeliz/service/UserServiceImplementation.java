@@ -1,5 +1,6 @@
 package com.criancafeliz.service;
 
+import com.criancafeliz.config.JwtProvider;
 import com.criancafeliz.model.Child;
 import com.criancafeliz.model.User;
 import com.criancafeliz.repository.UserRepository;
@@ -15,6 +16,9 @@ public class UserServiceImplementation implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private JwtProvider jwtProvider;
+
     @Override
     public User findUserById(Long userId) throws Exception {
         Optional <User> opt = userRepository.findById(userId);
@@ -23,5 +27,22 @@ public class UserServiceImplementation implements UserService {
             return opt.get();
         }
         throw new Exception ("Usuário não encontrado com id: " +userId);
+    }
+
+    @Override
+    public User findUserByJwt (String jwt) throws Exception {
+
+        String email = jwtProvider.getEmailFromToken(jwt);
+
+        if(email == null){
+            throw new Exception("Forneça um token válido...");
+        }
+        User user = userRepository.findByEmail(email);
+
+        if (user == null) {
+            throw new Exception("Usuário não vinculado ao email " +email);
+
+        }
+        return user;
     }
 }

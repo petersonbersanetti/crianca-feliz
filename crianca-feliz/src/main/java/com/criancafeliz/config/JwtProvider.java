@@ -12,14 +12,14 @@ import java.util.Date;
 @Service
 public class JwtProvider {
 
-    private SecretKey key = Keys.hmacShaKeyFor(JwtConstant.JWT_SECRET.getBytes());
+    private final SecretKey key = Keys.hmacShaKeyFor(JwtConstant.JWT_SECRET.getBytes());
 
     public String generateToken(Authentication auth) {
         String jwt = Jwts.builder().setIssuedAt(new Date())
                 .setIssuedAt (new Date())
                 .setExpiration(new Date(new Date().getTime()+864000000))
                 .claim("email", auth.getName())
-                .signWith(null).compact();
+                .signWith(key).compact();
         return jwt;
     }
 
@@ -32,7 +32,4 @@ public class JwtProvider {
 
         return email;
     }
-
-//    Bearer jwt
-
 }
