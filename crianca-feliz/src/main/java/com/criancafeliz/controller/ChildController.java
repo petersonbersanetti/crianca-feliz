@@ -20,9 +20,9 @@ public class ChildController {
     @Autowired
     private UserService userService;
 
-    @PostMapping ("/user/{userId}")
-    public Child createChild (@RequestBody Child child, @PathVariable Long userId) throws Exception {
-        User user = userService.findUserById(userId);
+    @PostMapping ()
+    public Child createChild (@RequestBody Child child, @RequestHeader ("Authorization") String jwt) throws Exception {
+        User user = userService.findUserByJwt(jwt);
         return childService.createChild(child, user);
     }
 
