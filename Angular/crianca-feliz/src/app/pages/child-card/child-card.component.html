@@ -1,0 +1,28 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <img mat-card-avatar
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3xLhKqoLTGpD_Ky-RlMPVXH2YIr8AE1NX3NuoeD0Ii5tey8d-F5F9jeQLyw4uGLkJyEk&usqp=CAU"
+      alt="">
+    <mat-card-title>Nome do Filho</mat-card-title>
+    <mat-card-subtitle>Idade</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <b>Vacinas Agendadas</b>
+    <p>
+      Aqui aparecerão as vacinas agendadas para seu filho
+    </p>
+  </mat-card-content>
+  <mat-card-actions class="flex justify-between">
+    <div>
+      <button (click)="handleOpenEditChildForm()" mat-icon-button aria-label="Example icon butto with a home icon">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div>
+      <button mat-icon-button aria-label="Example icon butto with a home icon">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

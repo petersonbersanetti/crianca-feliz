@@ -1,0 +1,33 @@
+
+<h1 class="text-center pt-5"> Atualizar dados do Filho </h1>
+<form (ngSubmit)="onSubmit()" class="w-[27rem] p-6 rounded-lg shadwo-md">
+
+    <div class="mb-4">
+        <mat-form-field class="w-full">
+            <mat-label class="text-gray-200">Nome</mat-label>
+            <input matInput placeholder="Digite o Nome..." value="childItem.name" name="Nome" 
+            [(ngModel)]="childItem.name" class="py-2 px-3 text-gray-200 mt-1 focous:shadow-outline" />
+        </mat-form-field>
+    </div>
+
+    <div class="mb-4">
+        <mat-form-field class="w-full">
+            <mat-label class="text-gray-200">Cartão do SUS</mat-label>
+            <input matInput placeholder="Digite o Número do Cartão do SUS..." value="childItem.susCard" name="SusCard "
+                [(ngModel)]="childItem.susCard" class="py-2 px-3 text-gray-200 mt-1 focous:shadow-outline" />
+        </mat-form-field>
+    </div>
+
+    <div class="mb-4">
+        <mat-form-field class="w-full">
+            <mat-label class="text-gray-200">Cartão de Vacina</mat-label>
+            <input matInput placeholder="Digite o Número do Cartão de Vacina..." value="childItem.vacCard" name="VacCard"
+                [(ngModel)]="childItem.vacCard" class="py-2 px-3 text-gray-200 mt-1 focous:shadow-outline" />
+        </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">
+        Atualizar Dados
+    </button>
+
+</form>

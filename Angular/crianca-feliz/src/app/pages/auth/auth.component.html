@@ -1,0 +1,68 @@
+<div class="flex justify-center h-screen items-center overflow-hidden">
+
+    <div class="container">
+        <div class="cover" [ngClass]="{'route=active':isRegister}">
+
+            <div class="front">
+                <img src="https://media.istockphoto.com/id/1399611777/pt/foto/portrait-of-a-smiling-little-brown-haired-boy-looking-at-the-camera-happy-kid-with-good.jpg?s=612x612&w=0&k=20&c=7Jcx5NsIbyqPE2xWamyWQtuwECSox0wmoXvat3elBX8="
+                    alt="">
+
+                <div class="text">
+                    <span class="text-1">
+                        Criança Feliz, a saúde do seu filho importa!
+                    </span>
+                    <span>Seja Bem-Vindo</span>
+                </div>
+
+            </div>
+            <div class="back">
+                <img src="https://www.elinformadorve.com/wp-content/uploads/2022/01/asi-es-el-desarrollo-psicomotor-y-la-evolucion-en-ninos-de-4-a-6-anos-md.jpg" 
+                alt="">
+            </div>
+
+        </div>
+        <div class="form h-full">
+            <div class="form-content h-full">
+                <div class="login-form">
+                    <h1 class="text-lg font-bold text-center pb-8">Registrar</h1>
+
+                    <form (ngSubmit)="onSubmit()" class="w-[27rem] p-6 rounded-lg shadow-md">
+
+                        <div class="mb-4">
+                            <mat-form-field class="w-full">
+                                <mat-label class="text-gray-200">Nome</mat-label>
+                                <input matInput placeholder="Digite o Nome..." value="" name="Nome" 
+                                [(ngModel)]="childItem.name" class="py-2 px-3 text-gray-200 mt-1 focous:shadow-outline" />
+                            </mat-form-field>
+                        </div>
+                    
+                        <div class="mb-4">
+                            <mat-form-field class="w-full">
+                                <mat-label class="text-gray-200">Cartão do SUS</mat-label>
+                                <input matInput placeholder="Digite o Número do Cartão do SUS..." value="" name="SusCard "
+                                    [(ngModel)]="childItem.susCard" class="py-2 px-3 text-gray-200 mt-1 focous:shadow-outline" />
+                            </mat-form-field>
+                        </div>
+                    
+                        <div class="mb-4">
+                            <mat-form-field class="w-full">
+                                <mat-label class="text-gray-200">Cartão de Vacina</mat-label>
+                                <input matInput placeholder="Digite o Número do Cartão de Vacina..." value="" name="VacCard"
+                                    [(ngModel)]="childItem.vacCard" class="py-2 px-3 text-gray-200 mt-1 focous:shadow-outline" />
+                            </mat-form-field>
+                        </div>
+                    
+                        <button mat-raised-button color="primary" type="submit">
+                            Registrar
+                        </button>
+                    
+                    </form>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
