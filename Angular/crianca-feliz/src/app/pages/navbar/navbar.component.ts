@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { AuthServiceService } from '../../services/Auth/auth-service.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-navbar',
@@ -12,4 +15,25 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class NavbarComponent {
 
+  user:any=null;
+
+  constructor(public authService:AuthServiceService, private router:Router){}
+
+  ngOnInit(){
+      this.authService.getUserProfile().subscribe({
+        next:data=>console.log("req user ", data),
+        error:error=>console.log("error ", error)
+      });
+    this.authService.authSubject.subscribe(
+      (auth)=>{
+        console.log("auth state ", auth)
+        this.user=auth.user
+      }
+    )
+  }
+
+  handleLogOut(){
+    this.authService.logout()
+    //this.router.navigate("/")
+  }
 }

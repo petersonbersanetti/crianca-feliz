@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { ChildCardComponent } from '../child-card/child-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import {
-  MatDialog,
-} from '@angular/material/dialog';
+import { MatDialog} from '@angular/material/dialog';
 import { CreateChildFormComponent } from '../create-child-form/create-child-form.component';
+import { AuthServiceService } from '../../services/Auth/auth-service.service';
+import { ChildServiceService } from '../../services/Child/child-service.service';
+
+
 
 @Component({
   selector: 'app-home-page',
@@ -16,14 +18,19 @@ import { CreateChildFormComponent } from '../create-child-form/create-child-form
 })
 export class HomePageComponent {
 
-  children=[1,1,1,1,11,1]
+  children=[]
 
-  constructor(public dialog: MatDialog){
+  constructor(public dialog: MatDialog, public authService:AuthServiceService, private childService:ChildServiceService){
 
   }
 
   handleOpenCreateChildForm(){
     this.dialog.open(CreateChildFormComponent)
+  }
+
+  ngOnInit(){
+    this.authService.getUserProfile();
+    this.childService.getChildren();
   }
 
 }
