@@ -11,7 +11,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/api/users/profile")
+    @GetMapping("/api/auth/users/profile")
     public User findUserByJwt (@RequestHeader("Authorization") String jwt) throws Exception{
         User user = userService.findUserByJwt(jwt);
 

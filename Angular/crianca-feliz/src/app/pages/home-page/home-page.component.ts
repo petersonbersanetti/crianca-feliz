@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog} from '@angular/material/dialog';
 import { CreateChildFormComponent } from '../create-child-form/create-child-form.component';
-import { AuthServiceService } from '../../services/Auth/auth-service.service';
+import { AuthService } from '../../services/Auth/auth-service';
 import { ChildServiceService } from '../../services/Child/child-service.service';
 
 
@@ -20,7 +20,7 @@ export class HomePageComponent {
 
   children=[]
 
-  constructor(public dialog: MatDialog, public authService:AuthServiceService, private childService:ChildServiceService){
+  constructor(public dialog: MatDialog, public authService:AuthService, private childService:ChildServiceService){
 
   }
 

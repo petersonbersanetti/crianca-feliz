@@ -1,21 +1,16 @@
-<!-- <router-outlet></router-outlet> -->
+<div class="">
 
 
-<div>
-  <div class="min-h-[91vh]">
-     <app-navbar/> 
-    
-    @if(user){
-      <app-home-page/>
-    }
-    @else {
-      <app-auth/>
-    }
-
-
+  @if(user){
+  <app-navbar />
+  <div class="min-h-[90vh]">
+    <router-outlet></router-outlet>
+    <app-footer />
   </div>
- 
+  }
+  @else {
+  <app-auth />
+  }
 
 
- <!--<app-footer/>-->
 </div>
