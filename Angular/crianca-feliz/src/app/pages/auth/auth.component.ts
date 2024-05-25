@@ -6,7 +6,10 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
-import { AuthService } from '../../services/Auth/auth-service';
+import { AuthService } from '../../services/Auth/auth-service.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+
 
 @Component({
   selector: 'app-auth',
@@ -19,7 +22,7 @@ import { AuthService } from '../../services/Auth/auth-service';
     MatRadioModule, 
     MatDatepickerModule, 
     MatIconModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule, MatButtonModule, MatCardModule
   ],
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']

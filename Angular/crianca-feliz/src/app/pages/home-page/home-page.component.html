@@ -1,9 +1,7 @@
-
-
 <div class="pb-5">
     <div class="flex justify-center flex-wrap gap-5">
-        @for (itm of children; track 1) {
-            <app-child-card/>
+        @for (item of children; track 1) {
+            <app-child-card [child]="item" />
         }
         @empty {
             <div>
@@ -13,9 +11,8 @@
         </div>
 
         <div class="fixed bottom-10 right-10">
-            <button (click)="handleOpenCreateChildForm()" mat-fab color="primary">
+            <button (click)="handleOpenCreateChildForm()" mat-fab style="background-color: #023047; color: white;">
                 <mat-icon>add</mat-icon>
             </button>
         </div>
 </div>
-
