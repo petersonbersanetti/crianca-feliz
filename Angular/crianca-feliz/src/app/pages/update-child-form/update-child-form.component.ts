@@ -7,7 +7,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import { ChildServiceService } from '../../services/child-service.service';
+import { ChildServiceService } from '../../services/Child/child-service.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 

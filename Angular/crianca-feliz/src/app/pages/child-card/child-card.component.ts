@@ -4,7 +4,7 @@ import {MatCardModule} from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { UpdateChildFormComponent } from '../update-child-form/update-child-form.component';
-import { ChildServiceService } from '../../services/child-service.service';
+import { ChildServiceService } from '../../services/Child/child-service.service';
 
 @Component({
   selector: 'app-child-card',

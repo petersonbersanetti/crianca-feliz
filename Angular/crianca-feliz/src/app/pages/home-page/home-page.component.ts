@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CreateChildFormComponent } from '../create-child-form/create-child-form.component';
 import { MatDialog} from '@angular/material/dialog';
 import { AuthService } from '../../services/Auth/auth-service.service';
-import { ChildServiceService } from '../../services/child-service.service';
+import { ChildServiceService } from '../../services/Child/child-service.service';
 import { state } from '@angular/animations';
 
 
