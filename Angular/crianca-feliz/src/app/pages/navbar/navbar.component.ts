@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
-  user:any=null;
+  user: any = { name: '' };
   
   constructor(public authService:AuthService, private router:Router){}
 
@@ -22,7 +22,7 @@ export class NavbarComponent {
     this.authService.authSubject.subscribe(
       (auth)=>{
         console.log("auth state ", auth)
-        this.user=auth.user
+        this.user = auth?.user || { name: '' };
       }
     )
   }
