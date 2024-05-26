@@ -50,11 +50,11 @@ export class ChildServiceService {
 
   updateChildren(child: any): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.put(`${this.baseUrl}/api/childs/${child.id}`, child, { headers }).pipe(
+    return this.http.put(`${this.baseUrl}/api/childs/${child.idSon}`, child, { headers }).pipe(
       tap((updateChild: any) => {
         const currentState = this.childSubject.value;
         const updateChildren = currentState.children.map
-          ((item: any) => item.id === updateChild.id ? updateChild : item);
+          ((item: any) => item.idSon === updateChild.idSon ? updateChild : item);
         this.childSubject.next({
           ...currentState,
           children: updateChildren
