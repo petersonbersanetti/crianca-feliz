@@ -10,18 +10,17 @@ import { AuthService } from '../../services/Auth/auth-service.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
-
 @Component({
   selector: 'app-auth',
   standalone: true,
   imports: [
-    CommonModule, 
-    MatInputModule, 
-    MatFormFieldModule, 
-    FormsModule, 
-    MatRadioModule, 
-    MatDatepickerModule, 
-    MatIconModule, 
+    CommonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatIconModule,
     ReactiveFormsModule, MatButtonModule, MatCardModule
   ],
   templateUrl: './auth.component.html',
@@ -29,6 +28,8 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class AuthComponent {
   isRegister = false;
+  registrationSuccess: boolean = false;
+  registrationMessage: string = '';
 
   constructor(public authService: AuthService) {}
 
@@ -48,13 +49,14 @@ export class AuthComponent {
     console.log("register ", this.registrationForm.value);
     this.authService.register(this.registrationForm.value).subscribe({
       next: (response) => {
-        if (this.isBrowser()) {
-          localStorage.setItem("jwt", response.jwt);
-        }
-        this.authService.getUserProfile().subscribe();
+        this.registrationSuccess = true;
+        this.registrationMessage = 'Registro realizado com sucesso!';
+        this.registrationForm.reset();
         console.log("Signup success", response);
       },
       error: (error) => {
+        this.registrationSuccess = false;
+        this.registrationMessage = 'Falha no registro. Tente novamente.';
         console.error("Signup error", error);
       }
     });
@@ -78,6 +80,8 @@ export class AuthComponent {
 
   togglePanel() {
     this.isRegister = !this.isRegister;
+    this.registrationSuccess = false;
+    this.registrationMessage = '';
   }
 
   private isBrowser(): boolean {

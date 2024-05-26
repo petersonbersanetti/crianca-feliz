@@ -17,7 +17,12 @@ export class AuthService {
   });
 
   login(userData: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/auth/signin`, userData);
+    return this.http.post<any>(`${this.baseUrl}/auth/signin`, userData).pipe(
+      tap((response) => {
+        localStorage.setItem('jwt', response.token);
+        this.authSubject.next({ user: response.user });
+      })
+    );
   }
 
   register(userData: any): Observable<any> {

@@ -27,7 +27,7 @@ export class ChildServiceService {
 
   getChildren(): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.get(`${this.baseUrl}/api/child`, { headers }).pipe(
+    return this.http.get(`${this.baseUrl}/api/childs`, { headers }).pipe(
       tap((children) => {
         const currentState = this.childSubject.value;
         this.childSubject.next({ ...currentState, children });
@@ -37,7 +37,7 @@ export class ChildServiceService {
 
   createChildren(child: any): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.post(`${this.baseUrl}/api/child`, child, { headers }).pipe(
+    return this.http.post(`${this.baseUrl}/api/childs`, child, { headers }).pipe(
       tap((newChild) => {
         const currentState = this.childSubject.value;
         this.childSubject.next({
@@ -51,7 +51,7 @@ export class ChildServiceService {
 
   updateChildren(child: any): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.put(`${this.baseUrl}/api/child/${child.id}`, child, { headers }).pipe(
+    return this.http.put(`${this.baseUrl}/api/childs/${child.id}`, child, { headers }).pipe(
       tap((updateChild: any) => {
         const currentState = this.childSubject.value;
         const updateChildren = currentState.children.map
@@ -64,7 +64,7 @@ export class ChildServiceService {
 
   deleteChildren(id: any): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.delete(`${this.baseUrl}/api/child/${id}`, { headers }).pipe(
+    return this.http.delete(`${this.baseUrl}/api/childs/${id}`, { headers }).pipe(
       tap((deleteChild: any) => {
         const currentState = this.childSubject.value;
         const updateChildren = currentState.children.filter
