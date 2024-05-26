@@ -19,4 +19,6 @@ public interface ChildService {
 
     public List<Child> findAllChild();
 
+    public List<Child> findChildrenByUser (User user) throws Exception;
+
 }

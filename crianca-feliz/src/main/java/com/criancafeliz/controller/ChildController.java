@@ -42,5 +42,12 @@ public class ChildController {
         return "Cadastro de filho deletado com sucesso!";
     }
 
+    @GetMapping("/user")
+    public List<Child> getChildrenByUser(@RequestHeader("Authorization") String jwt) throws Exception {
+        User user = userService.findUserByJwt(jwt);
+        return childService.findChildrenByUser(user);
+    }
+
+
 
 }

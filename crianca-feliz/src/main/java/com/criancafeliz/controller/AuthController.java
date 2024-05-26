@@ -34,16 +34,15 @@ public class AuthController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping ("/signup")
-    public AuthResponse createUser(@RequestBody User user) throws Exception{
-
+    @PostMapping("/signup")
+    public AuthResponse createUser(@RequestBody User user) throws Exception {
         String email = user.getEmail();
         String cpf = user.getCpf();
         String password = user.getPassword();
         String name = user.getName();
 
         User isExistEmail = userRepository.findByEmail(email);
-        if (isExistEmail!=null){
+        if (isExistEmail != null) {
             throw new Exception("O e-mail ja está sendo utilizado em outra conta");
         }
 
@@ -54,17 +53,9 @@ public class AuthController {
         createdUser.setName(name);
 
         User savedUser = userRepository.save(createdUser);
-        Authentication authentication = new UsernamePasswordAuthenticationToken(email, password);
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        String token = jwtProvider.generateToken(authentication);
 
         AuthResponse res = new AuthResponse();
-
-        res.setJwt(token);
         res.setMessage("Cadastro realizado com sucesso!");
-
         return res;
     }
 

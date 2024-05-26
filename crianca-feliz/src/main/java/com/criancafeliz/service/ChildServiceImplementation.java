@@ -65,4 +65,8 @@ public class ChildServiceImplementation implements ChildService {
     public List<Child> findAllChild() {
         return childRepository.findAll();
     }
+
+    public List<Child> findChildrenByUser(User user) {
+        return childRepository.findByUser(user);
+    }
 }

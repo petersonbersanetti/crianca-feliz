@@ -76,6 +76,11 @@ export class ChildServiceService {
     );
   }
 
+  getChildrenByUser(jwt: string): Observable<any> {
+    const headers = new HttpHeaders({ Authorization: `Bearer ${jwt}` });
+    return this.http.get<any>(`${this.baseUrl}/api/childs/user`, { headers });
+}
+
 
   
 }
