@@ -17,6 +17,7 @@ export class ChildCardComponent {
 
     @Input() child:any
     @Input() toggle:any
+    children: any[] = [];
 
     constructor(public dialog:MatDialog, private childService:ChildServiceService){
     }
@@ -27,12 +28,33 @@ export class ChildCardComponent {
     }
 
     ngOnInit(){
-      console.log("toggle ", this.toggle)
+      console.log("toggle ", this.toggle);
+      this.loadUserChildren();
     }
 
-    handleDeleteChild(){
-      this.childService.deleteChildren(this.child.id).subscribe()
+
+    loadUserChildren() {
+      const jwt = localStorage.getItem('jwt');
+      if (jwt) {
+        this.childService.getChildrenByUser(jwt).subscribe(children => {
+          this.children = children; 
+        });
+      }
     }
+    
+    handleDeleteChild() {
+      this.childService.deleteChildren(this.child.idSon).subscribe(
+        () => {
+          console.log("Filho deletado com sucesso!");
+          // Aqui você pode adicionar qualquer lógica adicional após a exclusão bem-sucedida
+        },
+        error => {
+          console.error("Erro ao excluir o filho:", error);
+          // Aqui você pode lidar com erros de exclusão, se necessário
+        }
+      );
+    }
+    
   
   }
   

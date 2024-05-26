@@ -29,7 +29,7 @@ export class CreateChildFormComponent {
 
 
   onSubmit() {
-    console.log("values, values", this.childItem);
+    console.log('values ', this.childItem);
     this.childService.createChildren(this.childItem).subscribe(
       {
         next: data => console.log("Created Child", data),

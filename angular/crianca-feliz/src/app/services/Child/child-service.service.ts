@@ -1,7 +1,7 @@
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, identity } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -42,8 +42,7 @@ export class ChildServiceService {
         const currentState = this.childSubject.value;
         this.childSubject.next({
           ...currentState,
-          child:
-            [newChild, ...currentState.child]
+          children: [...currentState.children, newChild]
         });
       })
     );
@@ -56,22 +55,26 @@ export class ChildServiceService {
         const currentState = this.childSubject.value;
         const updateChildren = currentState.children.map
           ((item: any) => item.id === updateChild.id ? updateChild : item);
-        this.childSubject.next({ ...currentState,
-          children: updateChildren });
+        this.childSubject.next({
+          ...currentState,
+          children: updateChildren
+        });
       })
     );
   }
 
-  deleteChildren(id: any): Observable<any> {
+  deleteChildren(idSon: any): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.delete(`${this.baseUrl}/api/childs/${id}`, { headers }).pipe(
-      tap((deleteChild: any) => {
+    return this.http.delete(`${this.baseUrl}/api/childs/${idSon}`, { headers, }).pipe(
+      tap((deleteChild) => {
         const currentState = this.childSubject.value;
         const updateChildren = currentState.children.filter
-          ((item: any) => item.id !== id 
-        );
-        this.childSubject.next({ ...currentState,
-          children: updateChildren });
+          ((item: any) => item.idSon !== idSon
+          );
+        this.childSubject.next({
+          ...currentState,
+          children: updateChildren
+        });
       })
     );
   }
@@ -79,8 +82,5 @@ export class ChildServiceService {
   getChildrenByUser(jwt: string): Observable<any> {
     const headers = new HttpHeaders({ Authorization: `Bearer ${jwt}` });
     return this.http.get<any>(`${this.baseUrl}/api/childs/user`, { headers });
-}
-
-
-  
+  }
 }

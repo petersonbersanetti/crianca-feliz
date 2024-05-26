@@ -1,11 +1,14 @@
 package com.criancafeliz.controller;
 
+import com.criancafeliz.config.ApiResponse;
 import com.criancafeliz.model.Child;
 import com.criancafeliz.model.User;
 import com.criancafeliz.repository.UserRepository;
 import com.criancafeliz.service.ChildService;
 import com.criancafeliz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,11 +39,16 @@ public class ChildController {
         return childService.findAllChild();
     }
 
-    @DeleteMapping ("/{userid}")
-    public String deletelChild (@PathVariable Long childId) throws Exception {
-        childService.deleteChild(childId);
-        return "Cadastro de filho deletado com sucesso!";
+    @DeleteMapping("/{idSon}")
+    public ResponseEntity<?> deleteChild(@PathVariable Long idSon) {
+        try {
+            childService.deleteChild(idSon);
+            return ResponseEntity.ok().body(new ApiResponse(true, "Cadastro de filho deletado com sucesso!"));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponse(false, "Erro ao deletar o filho: " + e.getMessage()));
+        }
     }
+
 
     @GetMapping("/user")
     public List<Child> getChildrenByUser(@RequestHeader("Authorization") String jwt) throws Exception {
