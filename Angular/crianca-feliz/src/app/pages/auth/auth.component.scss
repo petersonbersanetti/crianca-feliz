@@ -8,6 +8,12 @@
  
 }
 
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .container{
   position: relative;
   max-width: 850px;
@@ -60,6 +66,7 @@
   opacity: 0.5;
   z-index: 12;
 }
+
 .container .cover::after{
   opacity: 0.3;
   transform: rotateY(180deg);
@@ -82,8 +89,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
 }
+
 .cover .text .text-1,
 .cover .text .text-2{
   font-size: 26px;
@@ -113,6 +120,101 @@
 
 
 
+/*BREAKPOINTS*/
 
 
+@media screen and (max-width: 992px) { /*==TABLET GRANDE==*/
+  
+ .container{
+  max-width: 600px;
+}
+
+.container .cover{
+  position: absolute;
+  top: 60%;
+  left: 0;
+  height: 57%;
+  width: 100%;
+  z-index: 98;
+  transition: all 1s ease;
+  transform-origin: left;
+  transform-style: preserve-3d;
+}
+
+.container .rotate-active {
+	transform: translateY(-105%) scaleY(110%);
+  }
+
+  .cover .back{
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+  }
+
+  .container .cover::after{
+    transform: rotateX(180deg);
+  }
+
+
+.container .form-content{
+  flex-direction: column;
+}
+
+.form-content .login-form,
+.form-content .signup-form{
+  width: 40vh;
+}
+
+
+
+}
+
+
+
+
+
+@media screen and (max-width: 430px) { /*==SMARTPHONE(IPHONE 14 PRO MAX)==*/
+  
+  .container{
+    max-width: 400px;
+  }
+  
+  .container .cover{
+    position: absolute;
+    top: 60%;
+    left: 0;
+    height: 57%;
+    width: 100%;
+    z-index: 98;
+    transition: all 1s ease;
+    transform-origin: left;
+    transform-style: preserve-3d;
+  }
+  
+  .container .rotate-active {
+    transform: translateY(-105%) scaleY(110%);
+    }
+  
+    .cover .back{
+      transform: rotateX(180deg);
+      backface-visibility: hidden;
+    }
+  
+    .container .cover::after{
+      transform: rotateX(180deg);
+    }
+  
+  
+  .container .form-content{
+    flex-direction: column;
+  }
+  
+  .form-content .login-form,
+  .form-content .signup-form{
+    width: 30vh;
+  }
+  
+  
+  
+  }
+  
 
