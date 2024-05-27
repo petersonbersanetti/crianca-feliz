@@ -1,3 +1,19 @@
-div{
+div {
     color: black;
+    font-size: 1.3rem;
+}
+
+
+
+@media screen and (max-width: 821px) {
+    .fixed.bottom-10.right-10 {
+        bottom: 6rem;
+    }
+}
+
+
+@media screen and (max-width: 431px) {
+    .fixed.bottom-10.right-10 {
+        bottom: 6rem;
+    }
 }

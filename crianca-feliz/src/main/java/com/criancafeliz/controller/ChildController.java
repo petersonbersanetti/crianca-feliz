@@ -38,7 +38,7 @@ public class ChildController {
     public List<Child> getAllChild () throws Exception {
         return childService.findAllChild();
     }
-
+ 
     @DeleteMapping("/{idSon}")
     public ResponseEntity<?> deleteChild(@PathVariable Long idSon) {
         try {

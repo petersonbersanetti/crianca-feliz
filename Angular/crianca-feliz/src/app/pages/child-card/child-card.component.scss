@@ -1,5 +1,29 @@
 .example-card {
     max-width: 400px;
-    background-color: #497091;
+    background: linear-gradient(53deg, rgba(65,90,119,1) 71%, rgba(13,27,42,1) 100%);
   }
+
+
+  mat-card-title{
+    color: white;
+    text-shadow: 2px 2px #0d1b2a;
+    font-size: 1.5rem;
+  }
+
+  b{
+    color: #dda15e;
+    text-shadow: 2px 2px #0d1b2a;
+    font-size: 1rem;
+  }
+
+  p{
+    color: #0d1b2a;
+    font-size: 1rem;
+  }
+
+  button{
+    color: #0d1b2a;
+    text-shadow: 0.5px 0.5px white;
+  }
+  
 
