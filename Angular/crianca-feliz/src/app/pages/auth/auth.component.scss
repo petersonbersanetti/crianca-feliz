@@ -8,13 +8,8 @@
  
 }
 
-.logo{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .container{
+  border-radius: 30px 30px 30px 30px;
   position: relative;
   max-width: 850px;
   width: 100%;
@@ -22,9 +17,10 @@
   box-shadow: 0 5px 10px rgba(0,0,0,0.2);
   perspective: 500px;
   height: 70%;
-  background-color: #023047;
+  background-color: #0d1b2a;
 }
 .container .cover{
+  border-radius: 30px 30px 30px 30px;
   position: absolute;
   top: 0;
   left: 50%;
@@ -38,11 +34,13 @@
 
 
 .container .rotate-active {
+  border-radius: 30px 30px 30px 30px;
 	transform: rotateY(-180deg);
   }
 
  .container .cover .front,
  .container .cover .back{
+  border-radius: 30px 30px 30px 30px;
   position: absolute;
   top: 0;
   left: 0;
@@ -53,11 +51,13 @@
 
 .cover .back{
   transform: rotateY(180deg);
+  border-radius: 30px 30px 30px 30px;
   backface-visibility: hidden;
 }
 
 .container .cover::before,
 .container .cover::after{
+  border-radius: 30px 30px 30px 30px;
   content: '';
   position: absolute;
   height: 100%;
@@ -73,6 +73,7 @@
   backface-visibility: hidden;
 }
 .container .cover img{
+  border-radius: 30px 30px 30px 30px;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -109,7 +110,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #023047;
+  background-color: #0d1b2a;
 }
 
 
@@ -123,10 +124,13 @@
 /*BREAKPOINTS*/
 
 
-@media screen and (max-width: 992px) { /*==TABLET GRANDE==*/
+@media screen and (max-width: 821px) { /*==TABLET GRANDE==*/
   
+
  .container{
-  max-width: 600px;
+  top: -10%;
+  max-width: 550px;
+  height: 790px;
 }
 
 .container .cover{
@@ -172,10 +176,12 @@
 
 
 
-@media screen and (max-width: 430px) { /*==SMARTPHONE(IPHONE 14 PRO MAX)==*/
+@media screen and (max-width: 431px) { /*==SMARTPHONE(IPHONE 14 PRO MAX)==*/
   
   .container{
     max-width: 400px;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px;    
   }
   
   .container .cover{
